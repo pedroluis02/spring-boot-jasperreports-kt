@@ -1,6 +1,7 @@
 package com.github.pedroluis02.springbootsamples.jasperreports
 
-import com.github.pedroluis02.springbootsamples.jasperreports.model.Inventory
+import com.github.pedroluis02.springbootsamples.jasperreports.model.inventory.Inventory
+import com.github.pedroluis02.springbootsamples.jasperreports.model.inventory.InventoryHeader
 import com.github.pedroluis02.springbootsamples.jasperreports.service.JasperInventoryReportService
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
@@ -28,6 +29,9 @@ class JasperInventoryReportTest {
 
     private fun createInventory(): Inventory {
         val id = UUID.randomUUID().toString()
-        return Inventory(id, "General report")
+        print(id)
+        val header = InventoryHeader(id, "General report", "Administrator")
+
+        return Inventory(header)
     }
 }
