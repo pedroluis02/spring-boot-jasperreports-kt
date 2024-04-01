@@ -7,11 +7,12 @@
 	</queryString>
 	<field name="id" class="java.lang.String"/>
 	<field name="description" class="java.lang.String"/>
+	<field name="username" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="90" splitType="Stretch">
 			<staticText>
 				<reportElement x="180" y="20" width="200" height="20" uuid="2bc09625-a1be-4977-90e8-c274a1821851"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -20,7 +21,7 @@
 				<text><![CDATA[INVENTORY]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="0" y="12" width="82" height="56" uuid="1df9d577-aeb4-4408-a4e4-8d4f2f4330e9">
+				<reportElement x="54" y="-1" width="74" height="66" uuid="1df9d577-aeb4-4408-a4e4-8d4f2f4330e9">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -28,9 +29,68 @@
 				</jr:QRCode>
 			</componentElement>
 			<textField>
-				<reportElement x="180" y="40" width="200" height="30" uuid="e41cf7cb-c5a9-4d78-bf55-ddaad1412521"/>
+				<reportElement x="180" y="40" width="200" height="20" uuid="e41cf7cb-c5a9-4d78-bf55-ddaad1412521"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="65" width="180" height="16" uuid="800d4626-6351-402c-8cc3-e8df8ac69d3f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="438" y="11" width="32" height="14" uuid="531b1b47-06f7-49a6-9486-4994c79c2350"/>
+				<text><![CDATA[User:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="470" y="11" width="84" height="14" uuid="6ebbb1db-690d-4448-b702-bcfa94a510bf">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="438" y="29" width="32" height="14" uuid="a5d3ac14-3c0f-4192-88d1-77c80754e237"/>
+				<text><![CDATA[Page:]]></text>
+			</staticText>
+			<textField evaluationTime="Master">
+				<reportElement x="470" y="29" width="84" height="14" uuid="7eb54c97-208a-4d44-ae24-7e5fe34d605c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{MASTER_CURRENT_PAGE}  + " / " + $V{MASTER_TOTAL_PAGES}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="438" y="47" width="32" height="14" uuid="7aec34f2-e326-4484-976b-a7a67299ae5e"/>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField pattern="MMM d, yyyy">
+				<reportElement x="470" y="47" width="84" height="14" uuid="ae3e5cb6-5ce2-4e3d-a276-2f3f756b4013">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement x="470" y="66" width="84" height="14" uuid="0c928723-bf27-469c-a460-de584a8a80b1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

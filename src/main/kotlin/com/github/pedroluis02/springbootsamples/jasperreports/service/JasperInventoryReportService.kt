@@ -1,6 +1,6 @@
 package com.github.pedroluis02.springbootsamples.jasperreports.service
 
-import com.github.pedroluis02.springbootsamples.jasperreports.model.Inventory
+import com.github.pedroluis02.springbootsamples.jasperreports.model.inventory.Inventory
 import net.sf.jasperreports.engine.*
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource
 import net.sf.jasperreports.engine.util.JRLoader
@@ -27,7 +27,7 @@ class JasperInventoryReportService {
         val report = loadReport(compiled)
 
         val parameters = HashMap<String, Any>()
-        val dataSource = JRBeanCollectionDataSource(listOf(data))
+        val dataSource = JRBeanCollectionDataSource(listOf(data.header))
 
         return JasperFillManager.fillReport(report, parameters, dataSource)
     }
