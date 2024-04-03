@@ -16,6 +16,8 @@ class JasperInventoryReportService {
         private const val TEMPLATE_EXT = ".jrxml"
         private const val TEMPLATE_COMPILED_EXT = ".jasper"
         private const val TEMPLATE_DIR = "templates"
+
+        private const val SUMMARY_DATA_SOURCE_PARAM = "SUMMARY_DATA_SOURCE"
     }
 
     fun generatePdf(data: Inventory, output: String, compiled: Boolean = false) {
@@ -26,7 +28,9 @@ class JasperInventoryReportService {
     private fun fillReport(compiled: Boolean, data: Inventory): JasperPrint {
         val report = loadReport(compiled)
 
-        val parameters = HashMap<String, Any>()
+        val parameters = HashMap<String, Any>().apply {
+            put(SUMMARY_DATA_SOURCE_PARAM, JRBeanCollectionDataSource(data.summary))
+        }
         val dataSource = JRBeanCollectionDataSource(listOf(data.header))
 
         return JasperFillManager.fillReport(report, parameters, dataSource)
