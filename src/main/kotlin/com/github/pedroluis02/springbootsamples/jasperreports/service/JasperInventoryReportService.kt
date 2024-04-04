@@ -18,6 +18,7 @@ class JasperInventoryReportService {
         private const val TEMPLATE_DIR = "templates"
 
         private const val SUMMARY_DATA_SOURCE_PARAM = "SUMMARY_DATA_SOURCE"
+        private const val DEVICE_DATA_SOURCE_PARAM = "DEVICE_DATA_SOURCE"
     }
 
     fun generatePdf(data: Inventory, output: String, compiled: Boolean = false) {
@@ -30,6 +31,7 @@ class JasperInventoryReportService {
 
         val parameters = HashMap<String, Any>().apply {
             put(SUMMARY_DATA_SOURCE_PARAM, JRBeanCollectionDataSource(data.summary))
+            put(DEVICE_DATA_SOURCE_PARAM, JRBeanCollectionDataSource(data.devices))
         }
         val dataSource = JRBeanCollectionDataSource(listOf(data.header))
 
