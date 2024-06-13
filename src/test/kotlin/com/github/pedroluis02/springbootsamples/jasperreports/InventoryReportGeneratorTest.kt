@@ -5,10 +5,10 @@ import com.github.pedroluis02.springbootsamples.jasperreports.model.inventory.In
 import com.github.pedroluis02.springbootsamples.jasperreports.model.inventory.InventoryHeader
 import com.github.pedroluis02.springbootsamples.jasperreports.model.inventory.InventorySummary
 import com.github.pedroluis02.springbootsamples.jasperreports.service.InventoryReportGeneratorService
+import com.github.pedroluis02.springbootsamples.jasperreports.service.InventoryReportGeneratorServiceImpl
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import java.io.File
 import java.util.*
 import java.util.stream.Collectors
 import kotlin.random.Random
@@ -19,7 +19,7 @@ class InventoryReportGeneratorTest {
 
     @BeforeEach
     fun setup() {
-        service = InventoryReportGeneratorService()
+        service = InventoryReportGeneratorServiceImpl()
     }
 
     @Test
@@ -27,8 +27,8 @@ class InventoryReportGeneratorTest {
         val data = createInventory()
         val output = System.currentTimeMillis().toString() + ".pdf"
 
-        service.generatePdf(data, output)
-        assertThat(File(output)).exists()
+        val file = service.generatePdf(data, output, false)
+        assertThat(file).exists()
     }
 
     private fun createInventory(): Inventory {
