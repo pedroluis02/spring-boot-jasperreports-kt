@@ -9,7 +9,7 @@ import org.springframework.core.io.Resource
 import org.springframework.stereotype.Service
 
 @Service
-class JasperInventoryReportService {
+class InventoryReportGeneratorService {
 
     companion object {
         private const val TEMPLATE_NAME = "inventory"

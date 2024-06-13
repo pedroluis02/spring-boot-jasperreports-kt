@@ -4,7 +4,7 @@ import com.github.pedroluis02.springbootsamples.jasperreports.model.Device
 import com.github.pedroluis02.springbootsamples.jasperreports.model.inventory.Inventory
 import com.github.pedroluis02.springbootsamples.jasperreports.model.inventory.InventoryHeader
 import com.github.pedroluis02.springbootsamples.jasperreports.model.inventory.InventorySummary
-import com.github.pedroluis02.springbootsamples.jasperreports.service.JasperInventoryReportService
+import com.github.pedroluis02.springbootsamples.jasperreports.service.InventoryReportGeneratorService
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -13,13 +13,13 @@ import java.util.*
 import java.util.stream.Collectors
 import kotlin.random.Random
 
-class JasperInventoryReportTest {
+class InventoryReportGeneratorTest {
 
-    lateinit var service: JasperInventoryReportService
+    lateinit var service: InventoryReportGeneratorService
 
     @BeforeEach
     fun setup() {
-        service = JasperInventoryReportService()
+        service = InventoryReportGeneratorService()
     }
 
     @Test
